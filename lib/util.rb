@@ -28,10 +28,8 @@ module Util
 
       return JSON.parse(response)
     rescue => e
-      puts e
       errorResponse = JSON.parse e.response.body
-      puts "Received HTTP #{e.message}: #{errorResponse["error"]}"
-      nil
+      raise "Received HTTP #{e.message}: #{errorResponse["error"]}"
     end
   end
 
